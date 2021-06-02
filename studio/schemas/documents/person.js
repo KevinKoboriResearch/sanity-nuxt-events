@@ -27,7 +27,13 @@ export default {
       name: 'bio',
       type: 'bioPortableText',
       title: 'Biography'
+    },
+    {
+      name: 'social',
+      type: 'social',
+      title: 'Social media links'
     }
+
   ],
   preview: {
     select: {

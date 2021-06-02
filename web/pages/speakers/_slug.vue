@@ -11,6 +11,17 @@
     <div class="bio" :v-if="bio.length > 0">
       <BlockContent v-if="bio" :blocks="bio" />
     </div>
+    <div class="social">
+      <ul v-if="social">
+        <li v-if="social.twitter"><a :href="social.twitter">Twitter</a></li>
+        <li v-if="social.instagram">
+          <a :href="social.instagram">Instagram</a>
+        </li>
+        <li v-if="social.github"><a :href="social.github">Github</a></li>
+        <li v-if="social.linkedin"><a :href="social.linkedin">LinkedIn</a></li>
+        <li v-if="social.website"><a :href="social.website">Website</a></li>
+      </ul>
+    </div>
     <div v-if="scheduleItems" class="sessions">
       <h2>Sessions</h2>
       <SessionItem
@@ -38,27 +49,27 @@ export default {
   components: {
     SanityImage,
     BlockContent,
-    SessionItem
+    SessionItem,
   },
   data() {
     return {
       name: undefined,
       bio: [],
       program: this.$store.getters.getProgram,
-      plainTextBio: blocksToText(this.bio)
+      plainTextBio: blocksToText(this.bio),
     }
   },
   computed: {
-    scheduleItems: data => {
-      return data.program.schedule.filter(item => {
+    scheduleItems: (data) => {
+      return data.program.schedule.filter((item) => {
         return (
           item.session &&
           item.session.persons &&
-          item.session.persons.filter(person => person.person._id === data.id)
+          item.session.persons.filter((person) => person.person._id === data.id)
             .length > 0
         )
       })
-    }
+    },
   },
   async asyncData({ params }) {
     return await sanityClient.fetch(query, params)
@@ -71,11 +82,11 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: this.plainTextBio
-        }
-      ]
+          content: this.plainTextBio,
+        },
+      ],
     }
-  }
+  },
 }
 </script>
 

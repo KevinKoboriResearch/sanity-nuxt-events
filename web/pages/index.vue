@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <header class="header">
+    <!-- <header class="header">
       <h1 class="title">{{ info.name }}</h1>
       <p class="subtitle">{{ info.description }}</p>
       <div class="dates">
@@ -24,7 +24,7 @@
     <div class="sessionListContainer">
       <h2 class="sessionListTitle">Schedule</h2>
       <SessionList :program="program" :info="info" />
-    </div>
+    </div> -->
   </section>
 </template>
 
